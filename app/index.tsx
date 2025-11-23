@@ -1,3 +1,9 @@
+/* 
+  © 2025 Arnab Ganguly — All Rights Reserved.
+  This code is provided solely for evaluation purposes and may not be copied,
+  modified, distributed, or used without explicit permission from the author.
+*/
+
 import { type HistoryData, type QRData } from "@/constants/types";
 import { useThemedColors } from "@/hooks/useThemedColors";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
@@ -5,7 +11,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { type BarcodeScanningResult, CameraView, useCameraPermissions } from "expo-camera";
 import * as Haptics from "expo-haptics";
 import { useFocusEffect, useRouter } from "expo-router";
-import React, { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Alert, BackHandler, Linking, Platform, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 export default function ScannerScreen() {

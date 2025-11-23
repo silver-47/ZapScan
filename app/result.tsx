@@ -1,8 +1,13 @@
+/* 
+  © 2025 Arnab Ganguly — All Rights Reserved.
+  This code is provided solely for evaluation purposes and may not be copied,
+  modified, distributed, or used without explicit permission from the author.
+*/
+
 import { type QRData } from "@/constants/types";
 import { useThemedColors } from "@/hooks/useThemedColors";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { useLocalSearchParams } from "expo-router";
-import React from "react";
 import { ActivityIndicator, ScrollView, StyleSheet, Text, View } from "react-native";
 import { WebView } from "react-native-webview";
 

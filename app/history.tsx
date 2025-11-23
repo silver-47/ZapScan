@@ -1,3 +1,9 @@
+/* 
+  © 2025 Arnab Ganguly — All Rights Reserved.
+  This code is provided solely for evaluation purposes and may not be copied,
+  modified, distributed, or used without explicit permission from the author.
+*/
+
 import { type HistoryData, type HistoryDataItem } from "@/constants/types";
 import { useThemedColors } from "@/hooks/useThemedColors";
 import { MaterialCommunityIcons } from "@expo/vector-icons";

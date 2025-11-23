@@ -1,3 +1,9 @@
+/* 
+  © 2025 Arnab Ganguly — All Rights Reserved.
+  This code is provided solely for evaluation purposes and may not be copied,
+  modified, distributed, or used without explicit permission from the author.
+*/
+
 import { type QRData } from "@/constants/types";
 import { useThemedColors } from "@/hooks/useThemedColors";
 import { Inter_300Light, Inter_400Regular, Inter_500Medium, Inter_600SemiBold, useFonts } from "@expo-google-fonts/inter";
