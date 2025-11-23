@@ -1,6 +1,6 @@
-import { type QRData } from "@/constants/types";
+import { type HistoryData, type QRData } from "@/constants/types";
 import { useThemedColors } from "@/hooks/useThemedColors";
-import { MaterialCommunityIcons } from "@expo/vector-icons"; // 👈 Changed to MaterialCommunityIcons
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { type BarcodeScanningResult, CameraView, useCameraPermissions } from "expo-camera";
 import * as Haptics from "expo-haptics";
@@ -23,6 +23,9 @@ export default function ScannerScreen() {
   const resetScanState = useCallback(() => {
     setScanned(false);
     setIsTorchOn(false);
+    return () => {
+      setIsTorchOn(false);
+    };
   }, []);
 
   useFocusEffect(resetScanState);
@@ -30,9 +33,9 @@ export default function ScannerScreen() {
   const saveScanToHistory = async (qrData: QRData) => {
     try {
       const existingHistory = await AsyncStorage.getItem("QRScanHistory");
-      const parsedHistory: QRData[] = existingHistory ? JSON.parse(existingHistory) : [];
-      const updatedHistory = [{ timestamp: Date.now(), ...qrData }, ...parsedHistory];
-      await AsyncStorage.setItem("QRScanHistory", JSON.stringify(updatedHistory));
+      const parsedHistory: HistoryData = existingHistory ? JSON.parse(existingHistory) : [];
+      await AsyncStorage.setItem("QRScanHistory", JSON.stringify([{ timestamp: Date.now(), ...qrData }, ...parsedHistory]));
+      setTimeout(() => setScanned(false), 1000);
     } catch (err) {
       let errorMessage = "Something happened please try again!";
       if (err instanceof Error) errorMessage = err.message;
