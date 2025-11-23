@@ -71,7 +71,7 @@ export default function ScannerScreen() {
   else if (!permission.granted)
     return (
       <View style={{ flex: 1, backgroundColor: colors.background, justifyContent: "center", alignItems: "center" }}>
-        <MaterialCommunityIcons name="camera-off" size={64} color={colors.textSecondary} />
+        <MaterialCommunityIcons name="camera-off" size={64} color={colors.textSecondary} allowFontScaling={false} />
         <Text style={[styles.message, { color: colors.text }]} allowFontScaling={false}>
           Camera access is required
         </Text>
@@ -163,7 +163,12 @@ export default function ScannerScreen() {
             setIsTorchOn((t) => !t);
           }}
         >
-          <MaterialCommunityIcons name={isTorchOn ? "flashlight" : "flashlight-off"} size={24} color="white" />
+          <MaterialCommunityIcons
+            name={isTorchOn ? "flashlight" : "flashlight-off"}
+            size={24}
+            color="white"
+            allowFontScaling={false}
+          />
         </TouchableOpacity>
       </View>
     </View>

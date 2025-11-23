@@ -46,7 +46,7 @@ export default function RootLayout() {
             title: "ZapScan ⚡",
             headerRight: (props) => (
               <Link href="/history" onPress={() => Haptics.performAndroidHapticsAsync(Haptics.AndroidHaptics.Confirm)}>
-                <MaterialCommunityIcons name="history" size={24} color={props.tintColor} />
+                <MaterialCommunityIcons name="history" size={24} color={props.tintColor} allowFontScaling={false} />
               </Link>
             ),
           }}
@@ -66,7 +66,7 @@ export default function RootLayout() {
                     Share.share({ message: data, url: type === "url" ? data : undefined }).catch(console.error);
                   }}
                 >
-                  <MaterialCommunityIcons name="share" size={24} color={props.tintColor} />
+                  <MaterialCommunityIcons name="share" size={24} color={props.tintColor} allowFontScaling={false} />
                 </TouchableOpacity>
               );
             },

@@ -81,7 +81,7 @@ const SwipeableListItemComponent = ({
   return (
     <View style={{ height: TOTAL_ITEM_HEIGHT - 16, marginBottom: 16 }}>
       <Animated.View style={[styles.deleteAction, deleteActionAnimatedStyle]}>
-        <MaterialCommunityIcons name="trash-can-outline" size={32} color="white" />
+        <MaterialCommunityIcons name="trash-can-outline" size={32} color="white" allowFontScaling={false} />
       </Animated.View>
       <GestureDetector gesture={panGesture}>
         <Animated.View style={itemAnimatedStyle}>
@@ -91,7 +91,12 @@ const SwipeableListItemComponent = ({
             style={[styles.card, { backgroundColor: colors.card, borderColor: colors.primary }]}
           >
             <View style={[styles.cardIcon, { backgroundColor: colors.primary + "20" }]}>
-              <MaterialCommunityIcons name={item.type === "url" ? "web" : "text-long"} size={24} color={colors.primary} />
+              <MaterialCommunityIcons
+                name={item.type === "url" ? "web" : "text-long"}
+                size={24}
+                color={colors.primary}
+                allowFontScaling={false}
+              />
             </View>
             <View style={styles.cardContent}>
               <Text
@@ -106,7 +111,7 @@ const SwipeableListItemComponent = ({
                 {new Date(item.timestamp).toLocaleString()}
               </Text>
             </View>
-            <MaterialCommunityIcons name="chevron-right" size={20} color={colors.textSecondary} />
+            <MaterialCommunityIcons name="chevron-right" size={20} color={colors.textSecondary} allowFontScaling={false} />
           </TouchableOpacity>
         </Animated.View>
       </GestureDetector>
@@ -151,7 +156,13 @@ const FilterGroup = ({ selected, onSelect }: { selected: Filter; onSelect: (s: F
   return (
     <View style={[styles.filterContainer, { justifyContent: "space-between", marginBottom: 24 }]}>
       <Text style={[styles.filterText, { color: colors.text }]} allowFontScaling={false}>
-        Filter <MaterialCommunityIcons name="filter-variant" size={styles.filterText.fontSize} color="currentColor" />
+        Filter{" "}
+        <MaterialCommunityIcons
+          name="filter-variant"
+          size={styles.filterText.fontSize}
+          color="currentColor"
+          allowFontScaling={false}
+        />
       </Text>
       <View style={styles.filterContainer}>
         <FilterButton title="All" />
@@ -236,7 +247,7 @@ export default function HistoryScreen() {
           removeClippedSubviews={true}
           ListEmptyComponent={() => (
             <View style={styles.emptyState}>
-              <MaterialCommunityIcons name="history" size={64} color={colors.textSecondary} />
+              <MaterialCommunityIcons name="history" size={64} color={colors.textSecondary} allowFontScaling={false} />
               <Text style={[styles.emptyText, { color: colors.text }]} allowFontScaling={false}>
                 No history found
               </Text>

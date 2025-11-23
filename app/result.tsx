@@ -27,7 +27,7 @@ export default function ResultScreen() {
         <Text style={[styles.titleText, { color: colors.text }]} allowFontScaling={false}>
           Found Text
         </Text>
-        <MaterialCommunityIcons name="text-long" size={36} color={colors.primary} />
+        <MaterialCommunityIcons name="text-long" size={36} color={colors.primary} allowFontScaling={false} />
       </View>
       <View style={[styles.card, { backgroundColor: colors.card, borderColor: colors.primary }]}>
         <Text selectable style={[styles.textContent, { color: colors.text }]} allowFontScaling={false}>
