@@ -1,11 +1,13 @@
+import { type QRData } from "@/constants/types";
 import { useThemedColors } from "@/hooks/useThemedColors";
 import { Inter_300Light, Inter_400Regular, Inter_500Medium, Inter_600SemiBold, useFonts } from "@expo-google-fonts/inter";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import * as Haptics from "expo-haptics";
-import { Link, Stack } from "expo-router";
+import { Link, Stack, useGlobalSearchParams } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { StatusBar } from "expo-status-bar";
 import { useEffect } from "react";
+import { Share, TouchableOpacity } from "react-native";
 import "react-native-reanimated";
 
 SplashScreen.preventAutoHideAsync();
@@ -50,7 +52,27 @@ export default function RootLayout() {
           }}
         />
         <Stack.Screen name="history" options={{ title: "QR Scan History 📜" }} />
-        <Stack.Screen name="result" options={{ title: "Scan Result" }} />
+        <Stack.Screen
+          name="result"
+          options={{
+            title: "Scan Result",
+            headerRight: (props) => {
+              // eslint-disable-next-line react-hooks/rules-of-hooks
+              const { type, data } = useGlobalSearchParams<QRData>();
+              return (
+                <TouchableOpacity
+                  onPress={() => {
+                    Haptics.performAndroidHapticsAsync(Haptics.AndroidHaptics.Confirm);
+                    Share.share({ message: data, url: type === "url" ? data : undefined }).catch(console.error);
+                  }}
+                >
+                  <MaterialCommunityIcons name="share" size={24} color={props.tintColor} />
+                </TouchableOpacity>
+              );
+            },
+          }}
+          initialParams={{ type: "text", data: "---" }}
+        />
       </Stack>
     </>
   );
